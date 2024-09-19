@@ -1,4 +1,14 @@
+import axios from "axios";
+
 const Checkout = () => {
+  const handleCreatePayment = () => {
+    axios
+      .post("http://localhost:5000/create-payment", {
+        amount: "1000",
+        currency: "USD",
+      })
+      .then((response) => console.log(response));
+  };
   return (
     <>
       <div className="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
@@ -369,7 +379,10 @@ const Checkout = () => {
             </div>
           </div>
           {/* order Button */}
-          <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+          <button
+            onClick={handleCreatePayment}
+            className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
+          >
             Place Order
           </button>
         </div>
