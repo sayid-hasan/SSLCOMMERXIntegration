@@ -4,10 +4,16 @@ const Checkout = () => {
   const handleCreatePayment = () => {
     axios
       .post("http://localhost:5000/create-payment", {
-        amount: "1000",
+        amount: 1000,
         currency: "USD",
       })
-      .then((response) => console.log(response));
+      .then((response) => {
+        console.log("Payment created successfully:", response.data.paymentURL);
+        const redirectUrl = response.data.paymentURL;
+        if (redirectUrl) {
+          window.location.replace(redirectUrl);
+        }
+      });
   };
   return (
     <>
