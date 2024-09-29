@@ -5,7 +5,7 @@ const Checkout = () => {
     axios
       .post("http://localhost:5000/create-payment", {
         amount: 1000,
-        currency: "USD",
+        currency: "BDT",
       })
       .then((response) => {
         console.log("Payment created successfully:", response.data.paymentURL);
